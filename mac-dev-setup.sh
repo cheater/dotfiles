@@ -18,6 +18,13 @@ ln -s dotzprofile ~/.zprofile
 
 
 
+# Git
+
+ln -s ~/.gitconfig dotgitconfig
+
+
+
+
 # Save the fact that the dotfiles have been installed
 
 mkdir -p ~/.config

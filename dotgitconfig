@@ -1,0 +1,7 @@
+[user]
+	name = cheater 
+	email = 195390+cheater@users.noreply.github.com>
+[alias]
+	ci = commit -v
+[interactive]
+	singleKey = true
