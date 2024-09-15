@@ -7,8 +7,8 @@ scriptdir="$(pwd)" # The dir of this script. You have to launch the script from 
 
 # zsh
 
-cp -v dotzshrc ~/.zshrc
-cp -v dotzprofile ~/.zprofile
+ln -s dotzshrc ~/.zshrc
+ln -s dotzprofile ~/.zprofile
 
 
 
