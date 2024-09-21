@@ -1,14 +1,21 @@
 #!/bin/bash
 
-scriptdir="$(pwd)" # The dir of this script. You have to launch the script from its directory.
+# Initial setup
+
+cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null
+scriptdir="$(pwd)" # The directory this script is located in
+mkdir -p ~/.config
+link () {
+  ln -s "$(realpath $1)" $2
+  }
 
 
 
 
 # zsh
 
-ln -s dotzshrc ~/.zshrc
-ln -s dotzprofile ~/.zprofile
+link dotzprofile ~/.zprofile
+link dotzshrc    ~/.zshrc
 
 
 
@@ -20,12 +27,11 @@ ln -s dotzprofile ~/.zprofile
 
 # Git
 
-ln -s ~/.gitconfig dotgitconfig
+link dotgitconfig ~/.gitconfig
 
 
 
 
 # Save the fact that the dotfiles have been installed
 
-mkdir -p ~/.config
 touch ~/.config/.dotfiles_installed
