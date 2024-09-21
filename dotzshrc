@@ -2,4 +2,6 @@
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+export MANPAGER="vim +MANPAGER --not-a-term -"
+
 PATH="$HOME/bin:$PATH" # Add ~/bin to $PATH
