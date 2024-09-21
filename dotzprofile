@@ -1,6 +1,8 @@
 #!/bin/zsh
 
 if ! [ -z "$SSH_CLIENT" ]; then # only if logging in via ssh
+# Only execute if logging in via ssh into a mac
+if ! [ -z "$SSH_CLIENT" ] && [[ "$(uname)" == "Darwin" ]]; then
 
   # We must run $(caffeinate > /dev/null &) because it is the only version of
   # spawning caffeinate in the background that starts up quietly, doesn't
