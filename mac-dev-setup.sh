@@ -12,8 +12,24 @@ link () {
 
 
 
+# Get pmset-session
+
+if ! [ -d ~/projects/pmset-session ]; then
+  echo "Cloning pmset-session..."
+  mkdir -p ~/projects
+  cd ~/projects
+  git clone https://github.com/cheater/pmset-session.git # can't use git@github.com:cheater/pmset-session.git because no ssh key installed
+  fi
+cd "$scriptdir"
+mkdir -p ~/bin
+link ~/projects/pmset-session/pmset-session ~/bin/pmset-session
+
+
+
+
 # zsh
 
+link dotzshenv   ~/.zshenv
 link dotzprofile ~/.zprofile
 link dotzshrc    ~/.zshrc
 

@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-if ! [ -z "$SSH_CLIENT" ]; then # only if logging in via ssh
 # Only execute if logging in via ssh into a mac
 if ! [ -z "$SSH_CLIENT" ] && [[ "$(uname)" == "Darwin" ]]; then
 
@@ -30,4 +29,18 @@ if ! [ -z "$SSH_CLIENT" ] && [[ "$(uname)" == "Darwin" ]]; then
   # interpolated as a command.
 
   true $(caffeinate >/dev/null &)
+
+  # However, caffeinate doesn't work when the lid is closed. Instead, we'll use
+  # pmset-session which is pmset with a lockfile mechanism.
+
+  # Note: you need pmset-session to be in $PATH, and .zshrc hasn't been parsed
+  # yet. Therefore, if pmset-session is in e.g. $HOME/bin, add that to $PATH in
+  # .zshenv.
+
+  pmset_restore () {
+    pmset-session --end-session $$ # Pass the current shell's PID stored in $$
+  }
+  trap pmset_restore SIGINT SIGTERM EXIT # do pmset_restore if shell exits/dies
+  pmset-session --start-session $$
+
   fi
