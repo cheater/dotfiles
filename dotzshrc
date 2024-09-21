@@ -5,3 +5,9 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export MANPAGER="vim +MANPAGER --not-a-term -"
 
 PATH="$HOME/bin:$PATH" # Add ~/bin to $PATH
+
+start_dir_dotfile="$HOME/.start_dir"
+if [ -e "$start_dir_dotfile" ]; then
+  start_dir="$(cat "$start_dir_dotfile")"
+  cd "$start_dir"
+  fi
